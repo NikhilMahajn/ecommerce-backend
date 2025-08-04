@@ -1,8 +1,14 @@
+
 #!/bin/bash
+set -e
 
 # Build the project
 echo "Building the project..."
-python3.9 -m pip install -r requirements.txt
+echo "Python version: $(python --version)"
+echo "Pip version: $(pip --version)"
+
+# Install requirements using pip directly
+pip install -r requirements.txt
 
 echo "Collect static files..."
-python3.9 manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput --clear
