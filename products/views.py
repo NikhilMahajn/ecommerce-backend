@@ -10,5 +10,15 @@ from rest_framework.decorators import api_view
 def getProducts(request):
     products = Products.objects.all()
     product_serizalized = ProductSerializer(products, many=True)
-    print(product_serizalized)
     return Response(product_serizalized.data)
+
+
+@api_view(['POST'])
+def createProduct(request):
+    serializer = ProductSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
+        return Response({'status':'success',"message":"product created"})
+    else:
+        return Response({'status':'error','message':'error creating product'})

@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-av7__td*-_=6*-on(0f0rehviqntobh-%gja&!680x195be-qy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -83,11 +83,17 @@ WSGI_APPLICATION = "ecommerce_backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': 
-        dj_database_url.config(
-        default=db_url,
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_AQC6efsnkIilaI5Enbh',
+        'HOST': 'ecommerce-backend-mahajannikhil0016-ecommerce-app.d.aivencloud.com',
+        'PORT': '20189',  
+        'OPTIONS': {
+            'sslmode': 'require',  
+        },
+    }
     
 }
 
