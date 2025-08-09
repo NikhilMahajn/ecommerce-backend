@@ -18,7 +18,6 @@ def createProduct(request):
     serializer = ProductSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-
         return Response({'status':'success',"message":"product created"})
     else:
         return Response({'status':'error','message':'error creating product'})
